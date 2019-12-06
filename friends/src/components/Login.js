@@ -25,21 +25,25 @@ export default function Login(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="username"
-        value={CredentialsContainer.username}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        name="password"
-        value={CredentialsContainer.password}
-        onChange={handleChange}
-      />
-      <button>Login</button>
+    <>
+      <form>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={credentials.username}
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={credentials.password}
+          onChange={handleChange}
+        />
+      </form>
+      <button onClick={handleSubmit}>Login</button>
       <button onClick={resetForm}>Clear</button>
-    </form>
+    </>
   );
 }
