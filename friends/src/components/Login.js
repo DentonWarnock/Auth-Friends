@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 export default function Login(props) {
   const [credentials, setCredentials] = useState({
@@ -7,9 +7,12 @@ export default function Login(props) {
     password: ""
   });
 
-  const login = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    axios.post("http://localhost:5000/api/");
+    axiosWithAuth()
+      .post("/login", credentials)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   const handleChange = e => {
@@ -22,7 +25,7 @@ export default function Login(props) {
   };
 
   return (
-    <form onSubmit={login}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         name="username"
@@ -30,7 +33,7 @@ export default function Login(props) {
         onChange={handleChange}
       />
       <input
-        type="text"
+        type="password"
         name="password"
         value={CredentialsContainer.password}
         onChange={handleChange}
