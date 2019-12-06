@@ -6,13 +6,21 @@ export default function Login(props) {
     username: "",
     password: ""
   });
+  const [errorMsg, setErrorMsg] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
     axiosWithAuth()
       .post("/login", credentials)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.payload);
+        props.history.push("/friends");
+      })
+      .catch(err => {
+        console.log(err.response.data.error);
+        setErrorMsg(err.response.data.error);
+      });
   };
 
   const handleChange = e => {
@@ -44,6 +52,7 @@ export default function Login(props) {
       </form>
       <button onClick={handleSubmit}>Login</button>
       <button onClick={resetForm}>Clear</button>
+      {errorMsg ? <h3>{errorMsg}</h3> : null}
     </>
   );
 }
