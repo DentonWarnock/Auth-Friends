@@ -31,11 +31,7 @@ const FriendForm = props => {
 
   const handleClear = e => {
     e.preventDefault();
-    setNewFriend({
-      name: "",
-      age: "",
-      email: ""
-    });
+    setNewFriend(initialState);
   };
 
   return (
