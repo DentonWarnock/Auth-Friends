@@ -7,31 +7,31 @@ const FriendForm = props => {
     age: "",
     email: ""
   };
-  const [newFriend, setNewFriend] = useState(initialState);
+  const [input, setInput] = useState(initialState);
 
   const handleChange = e => {
-    setNewFriend({
-      ...newFriend,
+    setInput({
+      ...input,
       [e.target.name]: e.target.value
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    setNewFriend({ ...newFriend, id: Date.now() }); // doesn't seem to be working... id: friends.length + 1
+    setInput({ ...input, id: Date.now() }); // doesn't seem to be working... id: friends.length + 1
     axiosWithAuth()
-      .post("/friends", newFriend)
+      .post("/friends", input)
       .then(res => {
         console.log("FriendsForm.js, Add new friend, res: ", res);
         props.setFriends(res.data);
-        setNewFriend(initialState);
+        setInput(initialState);
       })
       .catch(err => console.log("FriendsForm.js, add new friend, err: ", err));
   };
 
   const handleClear = e => {
     e.preventDefault();
-    setNewFriend(initialState);
+    setInput(initialState);
   };
 
   return (
@@ -41,21 +41,21 @@ const FriendForm = props => {
         type="text"
         name="name"
         placeholder="Name..."
-        value={newFriend.name}
+        value={input.name}
         onChange={handleChange}
       />
       <input
         type="number"
         name="age"
         placeholder="Age..."
-        value={newFriend.age}
+        value={input.age}
         onChange={handleChange}
       />
       <input
         type="email"
         name="email"
         placeholder="Email..."
-        value={newFriend.email}
+        value={input.email}
         onChange={handleChange}
       />
       <button type="submit">Add</button>
