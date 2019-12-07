@@ -50,6 +50,7 @@ export default function Login(props) {
           onChange={handleChange}
         />
       </form>
+      <h6>{`hint: i<3Lambd4`}</h6>
       <button onClick={handleSubmit}>Login</button>
       <button onClick={resetForm}>Clear</button>
       {errorMsg ? <h3>{errorMsg}</h3> : null}
