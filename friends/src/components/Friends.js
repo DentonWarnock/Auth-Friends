@@ -33,13 +33,13 @@ const Friends = props => {
   };
 
   if (loading) {
-    return <img src={Spinner} alt="Loading Spinner" />;
+    return <img className="spinner" src={Spinner} alt="Loading Spinner" />;
   }
 
-  console.log(friends);
+  console.log("Friends.js: friends: ", friends);
   return (
     <>
-      <FriendForm setFriends={setFriends} />
+      < } />
       <h2>Friends List : </h2>
       <div className="friends-list">
         {!loading && friends !== undefined ? (

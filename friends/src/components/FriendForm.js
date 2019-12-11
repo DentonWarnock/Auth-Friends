@@ -18,7 +18,7 @@ const FriendForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setInput({ ...input, id: Date.now() }); // doesn't seem to be working... id: friends.length + 1
+    // setInput({ ...input, id: Date.now() }); // doesn't seem to be working... id: friends.length + 1
     axiosWithAuth()
       .post("/friends", input)
       .then(res => {

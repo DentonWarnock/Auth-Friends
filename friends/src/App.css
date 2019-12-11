@@ -81,3 +81,7 @@ button {
   align-content: center;
   justify-content: center;
 }
+
+.spinner {
+  margin-top: 20%;
+}
